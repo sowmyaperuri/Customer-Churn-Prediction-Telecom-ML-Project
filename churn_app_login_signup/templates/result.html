@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .message { font-size: 20px; font-weight: bold; color: #d60000; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <p>{{ "This customer is likely to churn!" if prediction == 1 else "Customer will stay." }}</p>
+    </div>
+
+    <canvas id="pieChart" width="400" height="400" style="display: block; margin: auto;"></canvas>
+    <script>
+        const ctx = document.getElementById('pieChart');
+        const chart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: {{ reasons | map(attribute='label') | list }},
+                datasets: [{
+                    data: {{ reasons | map(attribute='value') | list }},
+                    backgroundColor: ['#a2c4f2', '#f9cb9c', '#76d7c4', '#f4cccc']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

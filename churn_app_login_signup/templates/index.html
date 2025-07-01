@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Churn Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #83a4d4, #b6fbff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Churn Prediction</h1>
+        <form method="POST" action="/predict">
+            <label>Gender</label>
+            <select name="Gender"><option>Male</option><option>Female</option></select>
+
+            <label>Senior Citizen</label>
+            <select name="SeniorCitizen"><option>No</option><option>Yes</option></select>
+
+            <label>Partner</label>
+            <select name="Partner"><option>No</option><option>Yes</option></select>
+
+            <label>Tenure (in months)</label>
+            <input type="number" name="Tenure" required>
+
+            <label>Monthly Charges</label>
+            <input type="number" name="MonthlyCharges" required>
+
+            <label>Contract Type</label>
+            <select name="Contract">
+                <option>Month-to-month</option>
+                <option>One year</option>
+                <option>Two year</option>
+            </select>
+
+            <label>Internet Service</label>
+            <select name="InternetService">
+                <option>DSL</option>
+                <option>Fiber optic</option>
+                <option>None</option>
+            </select>
+
+            <label>Paperless Billing</label>
+            <select name="PaperlessBilling"><option>No</option><option>Yes</option></select>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
